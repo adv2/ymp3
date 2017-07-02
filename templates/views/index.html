@@ -1,0 +1,61 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+	<div class="container">
+		<div class="jumbotron">
+			<img src="/images/logo.svg" width="60">
+			<h2>Конвертер Youtube в MP3</h2>
+
+			<p>Insert youtube link here
+			<form action = "/process_get" method = "GET">
+				 Your link: <input type = "text" name = "linkToSubmit">
+				 <input type = "submit" value = "Submit" class="btn btn-lg btn-primary">
+			 </form>
+			</p> 
+			 
+			
+			<p>So we start typing and HELLO ALL again!!!
+			</p>
+		
+			<form method="post" action="/result">
+				<input type="text" name="customer[name]">
+				<input type="text" name="customer[email]">
+				<input type="text" name="customer[phone]">
+				<input type="submit" value="Submit">
+			</form>
+		
+		
+		Field1: <input type="text" id="field1" ><br>
+		Field2: <input type="text" id="field2"><br><br>
+
+		<button onclick="myFunction()">Copy Text</button>
+		
+		<p>A function is triggered when the button is clicked. The function copies the text from Field1 into Field2.</p>
+
+		<script>
+		function myFunction() {
+			document.getElementById("field2").value = document.getElementById("field1").value;
+		}
+		</script>
+		
+			<hr>
+			<hr>
+			<hr>
+			{% if user and user.canAccessKeystone %}
+				<p>
+					<a href="/keystone" class="btn btn-lg btn-primary">Open the Admin UI</a>
+				</p>
+			{% else %}
+				<p>We have created a default Admin user for you with the email <strong>adv@dinewithme.eu</strong> and the password <strong>123123</strong>.</p>
+				<p>
+					<a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a>
+					to use the Admin UI.
+				</p>
+			{% endif %}
+			<hr>
+			<p>
+				<a href="https://twitter.com/keystonejs" target="_blank">follow @keystonejs</a> on twitter for updates.
+			</p>
+		</div>
+	</div>
+{% endblock %}
